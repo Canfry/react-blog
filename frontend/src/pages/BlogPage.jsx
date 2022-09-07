@@ -1,6 +1,20 @@
 import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-export default function BlogPage({ posts }) {
+export default function BlogPage() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await fetch('http://localhost:5500/api/posts');
+      const data = await res.json();
+      const posts = data.posts;
+      console.log(posts);
+      setPosts(posts);
+    };
+    getPosts();
+  }, []);
+
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
 

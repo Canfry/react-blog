@@ -1,11 +1,13 @@
+import { useEffect } from 'react';
 import BlogItem from '../components/BlogItem';
 import { BsSearch } from 'react-icons/bs';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs';
-import { posts } from '../data';
+
 import { useState } from 'react';
 
 export default function BlogList() {
   const [search, setSearch] = useState('');
+  const [posts, setPosts] = useState([]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +18,17 @@ export default function BlogList() {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await fetch('http://localhost:5500/api/posts');
+      const data = await res.json();
+      const posts = data.posts;
+      console.log(posts);
+      setPosts(posts);
+    };
+    getPosts();
+  }, []);
 
   return (
     <>
@@ -63,7 +76,7 @@ export default function BlogList() {
             className='text-4xl text-cyan-500 animate-bounce w-6 h-6'
             title='Go on Top'
           >
-            <a href='#goTop'>
+            <a href='#goTop' className={posts.length < 3 ? 'none' : 'block'}>
               <BsFillArrowUpCircleFill />
             </a>
           </button>

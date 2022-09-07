@@ -7,7 +7,6 @@ import BlogPage from './pages/BlogPage';
 import SignIn from './pages/Sign-in';
 import SignUp from './pages/Sign-up';
 import Home from './pages/Home';
-import { posts } from './data';
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route exact path='/posts' element={<BlogList />} />
-          <Route path='/posts/:id' element={<BlogPage posts={posts} />} />
+          <Route path='/posts/:id' element={<BlogPage />} />
           <Route path='/sign-in' element={<SignIn />} />
           <Route path='/sign-up' element={<SignUp />} />
         </Routes>
