@@ -26,7 +26,7 @@ export default function Home() {
         </div>
 
         <p className='mb-4 font-bold text-sm'>FOLLOW ME ON :</p>
-        <div className='flex align-center justify-center text-2xl'>
+        <div className='flex align-center justify-center text-4xl'>
           <p>
             <a
               href='https://github.com/Canfry'

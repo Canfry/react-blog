@@ -8,6 +8,7 @@ import { useState } from 'react';
 export default function BlogList() {
   const [search, setSearch] = useState('');
   const [posts, setPosts] = useState([]);
+  // const [visible, setVisible] = useState(true);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ export default function BlogList() {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+    // setVisible(false);
   };
 
   useEffect(() => {
@@ -76,7 +78,7 @@ export default function BlogList() {
             className='text-4xl text-cyan-500 animate-bounce w-6 h-6'
             title='Go on Top'
           >
-            <a href='#goTop' className={posts.length < 3 ? 'none' : 'block'}>
+            <a href='#goTop'>
               <BsFillArrowUpCircleFill />
             </a>
           </button>
