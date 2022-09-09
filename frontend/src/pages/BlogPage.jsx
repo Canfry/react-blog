@@ -1,8 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Spinner from '../components/Spinner';
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
+  const [isloading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -11,12 +13,17 @@ export default function BlogPage() {
       const posts = data.posts;
       console.log(posts);
       setPosts(posts);
+      setIsLoading(false);
     };
     getPosts();
   }, []);
 
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
+
+  if (isloading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='flex-1'>

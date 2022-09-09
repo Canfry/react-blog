@@ -20,8 +20,4 @@ app.get('/', (req, res) => {
   res.send('Hello from the server!!!');
 });
 
-app.get('/api/posts', (req, res) => {
-  res.send(posts);
-});
-
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));

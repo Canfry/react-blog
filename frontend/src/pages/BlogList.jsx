@@ -4,10 +4,12 @@ import { BsSearch } from 'react-icons/bs';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 
 import { useState } from 'react';
+import Spinner from '../components/Spinner';
 
 export default function BlogList() {
   const [search, setSearch] = useState('');
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState('true');
   // const [visible, setVisible] = useState(true);
 
   const onSubmit = (e) => {
@@ -28,9 +30,14 @@ export default function BlogList() {
       const posts = data.posts;
       console.log(posts);
       setPosts(posts);
+      setIsLoading(false);
     };
     getPosts();
   }, []);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
