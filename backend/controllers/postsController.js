@@ -1,15 +1,28 @@
 const asyncHandler = require('express-async-handler');
 const posts = require('../posts.json');
 
-const getPost = asyncHandler(async (req, res) => {
-  const data = posts.posts;
-  data.map((post) => {
-    if (!req.body.params === post.id) {
-      res.send(404);
-      throw new Error('Not found');
-    }
-    res.status(200).json(post);
-  });
+const data = posts.posts;
+
+// @desc    Get All Posts
+// @method  GET /api/posts
+// @access  Public
+const getPosts = asyncHandler(async (req, res) => {
+  res.json(data);
 });
 
-module.exports = { getPost };
+// @desc    Get Single Post
+// @method  GET /api/posts/:id
+// @access  Public
+const getPost = asyncHandler(async (req, res) => {
+  const data = posts.posts;
+
+  const post = data.find((p) => p.id === req.params.id);
+  if (!post) {
+    return res
+      .status(404)
+      .json({ message: `Post ID ${req.params.id} not found` });
+  }
+  res.json(post);
+});
+
+module.exports = { getPost, getPosts };

@@ -10,9 +10,9 @@ export default function BlogPage() {
     const getPosts = async () => {
       const res = await fetch('http://localhost:5500/api/posts');
       const data = await res.json();
-      const posts = data.posts;
-      console.log(posts);
-      setPosts(posts);
+
+      console.log(data);
+      setPosts(data);
       setIsLoading(false);
     };
     getPosts();
@@ -26,7 +26,7 @@ export default function BlogPage() {
   }
 
   return (
-    <div className='flex-1'>
+    <div className='flex-1 mb-8'>
       {post && (
         <>
           <div className='max-w-[80%] md:max-w-[70%] lg:max-w-[60%] m-auto px-8 py-10 shadow-lg shadow-slate-300 rounded-md'>

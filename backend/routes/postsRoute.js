@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const posts = require('../posts.json');
-const { getPost } = require('../controllers/postsController');
+const { getPost, getPosts } = require('../controllers/postsController');
 
-router.get('/', (req, res) => {
-  res.send(posts);
-});
+router.get('/', getPosts);
 
 router.get('/:id', getPost);
 

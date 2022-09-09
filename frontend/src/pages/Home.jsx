@@ -42,7 +42,7 @@ export default function Home() {
               target='_blank'
               rel='noreferrer'
             >
-              <BsTwitter className='text-[#1da1f2] ml-4' />
+              <BsTwitter className='text-[#1da1f2] ml-8' />
             </a>
           </p>
         </div>

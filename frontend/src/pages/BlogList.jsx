@@ -27,9 +27,8 @@ export default function BlogList() {
     const getPosts = async () => {
       const res = await fetch('http://localhost:5500/api/posts');
       const data = await res.json();
-      const posts = data.posts;
-      console.log(posts);
-      setPosts(posts);
+      console.log(data);
+      setPosts(data);
       setIsLoading(false);
     };
     getPosts();
