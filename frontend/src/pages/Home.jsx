@@ -21,7 +21,7 @@ export default function Home() {
         </p>
         <div className='text-center mb-6 mt-6'>
           <button className='hover:bg-cyan-600 border rounded-md bg-cyan-500 text-white py-2 px-4'>
-            <Link to='/blogs'>POSTS</Link>
+            <Link to='/posts'>POSTS</Link>
           </button>
         </div>
 
