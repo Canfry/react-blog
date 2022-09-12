@@ -3,6 +3,8 @@ const cors = require('cors');
 // const dotenv = require('dotenv').config();
 const router = require('./routes/postsRoute');
 
+const { errorHandler } = require('./middleware/errorHandler');
+
 const app = express();
 
 const PORT = 5500;
@@ -19,5 +21,7 @@ app.use('/api/posts', require('./routes/postsRoute'));
 app.get('/', (req, res) => {
   res.send('Hello from the server!!!');
 });
+
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
