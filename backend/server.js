@@ -1,13 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-// const dotenv = require('dotenv').config();
-const router = require('./routes/postsRoute');
-
+const colors = require('colors');
+const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorHandler');
+const connectDB = require('./config/db');
 
 const app = express();
-
 const PORT = 5500;
+
+connectDB();
 
 app.use(cors());
 
